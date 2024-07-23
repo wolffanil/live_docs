@@ -7,8 +7,6 @@ import { DeleteModal } from "./DeleteModal";
 import { getDocuments } from "@/lib/actions/room.actions";
 
 async function Documents({ clerkUser }: { clerkUser: any }) {
-  await new Promise((res) => setTimeout(res, 10000));
-
   const roomDocuments = await getDocuments(
     clerkUser.emailAddresses[0].emailAddress
   );

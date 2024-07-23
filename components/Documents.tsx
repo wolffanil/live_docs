@@ -7,6 +7,8 @@ import { DeleteModal } from "./DeleteModal";
 import { getDocuments } from "@/lib/actions/room.actions";
 
 async function Documents({ clerkUser }: { clerkUser: any }) {
+  if (!clerkUser) return;
+
   const roomDocuments = await getDocuments(
     clerkUser.emailAddresses[0].emailAddress
   );

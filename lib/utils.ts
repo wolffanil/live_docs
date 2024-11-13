@@ -1,5 +1,5 @@
-import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -9,14 +9,14 @@ export const parseStringify = (value: any) => JSON.parse(JSON.stringify(value));
 
 export const getAccessType = (userType: UserType) => {
   switch (userType) {
-    case 'creator':
-      return ['room:write'];
-    case 'editor':
-      return ['room:write'];
-    case 'viewer':
-      return ['room:read', 'room:presence:write'];
+    case "creator":
+      return ["room:write"];
+    case "editor":
+      return ["room:write"];
+    case "viewer":
+      return ["room:read", "room:presence:write"];
     default:
-      return ['room:read', 'room:presence:write'];
+      return ["room:read", "room:presence:write"];
   }
 };
 
@@ -33,21 +33,21 @@ export const dateConverter = (timestamp: string): string => {
 
   switch (true) {
     case diffInDays > 7:
-      return `${Math.floor(diffInDays / 7)} weeks ago`;
+      return `${Math.floor(diffInDays / 7)} недель назад`;
     case diffInDays >= 1 && diffInDays <= 7:
-      return `${Math.floor(diffInDays)} days ago`;
+      return `${Math.floor(diffInDays)} дней назад`;
     case diffInHours >= 1:
-      return `${Math.floor(diffInHours)} hours ago`;
+      return `${Math.floor(diffInHours)} часов назад`;
     case diffInMinutes >= 1:
-      return `${Math.floor(diffInMinutes)} minutes ago`;
+      return `${Math.floor(diffInMinutes)} минут назад`;
     default:
-      return 'Just now';
+      return "прямо сейчас";
   }
 };
 
 // Function to generate a random color in hex format, excluding specified colors
 export function getRandomColor() {
-  const avoidColors = ['#000000', '#FFFFFF', '#8B4513']; // Black, White, Brown in hex format
+  const avoidColors = ["#000000", "#FFFFFF", "#8B4513"]; // Black, White, Brown in hex format
 
   let randomColor;
   do {
@@ -64,25 +64,25 @@ export function getRandomColor() {
 }
 
 export const brightColors = [
-  '#2E8B57', // Darker Neon Green
-  '#FF6EB4', // Darker Neon Pink
-  '#00CDCD', // Darker Cyan
-  '#FF00FF', // Darker Neon Magenta
-  '#FF007F', // Darker Bright Pink
-  '#FFD700', // Darker Neon Yellow
-  '#00CED1', // Darker Neon Mint Green
-  '#FF1493', // Darker Neon Red
-  '#00CED1', // Darker Bright Aqua
-  '#FF7F50', // Darker Neon Coral
-  '#9ACD32', // Darker Neon Lime
-  '#FFA500', // Darker Neon Orange
-  '#32CD32', // Darker Neon Chartreuse
-  '#ADFF2F', // Darker Neon Yellow Green
-  '#DB7093', // Darker Neon Fuchsia
-  '#00FF7F', // Darker Spring Green
-  '#FFD700', // Darker Electric Lime
-  '#FF007F', // Darker Bright Magenta
-  '#FF6347', // Darker Neon Vermilion
+  "#2E8B57", // Darker Neon Green
+  "#FF6EB4", // Darker Neon Pink
+  "#00CDCD", // Darker Cyan
+  "#FF00FF", // Darker Neon Magenta
+  "#FF007F", // Darker Bright Pink
+  "#FFD700", // Darker Neon Yellow
+  "#00CED1", // Darker Neon Mint Green
+  "#FF1493", // Darker Neon Red
+  "#00CED1", // Darker Bright Aqua
+  "#FF7F50", // Darker Neon Coral
+  "#9ACD32", // Darker Neon Lime
+  "#FFA500", // Darker Neon Orange
+  "#32CD32", // Darker Neon Chartreuse
+  "#ADFF2F", // Darker Neon Yellow Green
+  "#DB7093", // Darker Neon Fuchsia
+  "#00FF7F", // Darker Spring Green
+  "#FFD700", // Darker Electric Lime
+  "#FF007F", // Darker Bright Magenta
+  "#FF6347", // Darker Neon Vermilion
 ];
 
 export function getUserColor(userId: string) {

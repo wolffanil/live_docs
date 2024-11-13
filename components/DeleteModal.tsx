@@ -57,10 +57,10 @@ export const DeleteModal = ({ roomId }: DeleteModalProps) => {
             height={48}
             className="mb-4"
           />
-          <DialogTitle>Delete document</DialogTitle>
+          <DialogTitle>Удалить документ</DialogTitle>
           <DialogDescription>
-            Are you sure you want to delete this document? This action cannot be
-            undone.
+            Вы уверены, что хотите удалить этот документ? Это действие
+            невозможно отменить.
           </DialogDescription>
         </DialogHeader>
 
@@ -75,7 +75,7 @@ export const DeleteModal = ({ roomId }: DeleteModalProps) => {
             className="gradient-red w-full"
             disabled={loading}
           >
-            {loading ? "Deleting..." : "Delete"}
+            {loading ? "Удаление..." : "Удалить"}
           </Button>
         </DialogFooter>
       </DialogContent>

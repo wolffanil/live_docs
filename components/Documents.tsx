@@ -17,7 +17,7 @@ async function Documents({ clerkUser }: { clerkUser: any }) {
       {roomDocuments.data.length > 0 ? (
         <div className="document-list-container">
           <div className="document-list-title">
-            <h3 className="text-28-semibold">All documents</h3>
+            <h3 className="text-28-semibold">Все документы</h3>
             <AddDocumentBtn
               userId={clerkUser.id}
               email={clerkUser.emailAddresses[0].emailAddress}
@@ -41,7 +41,7 @@ async function Documents({ clerkUser }: { clerkUser: any }) {
                   <div className="space-y-1">
                     <p className="line-clamp-1 text-lg">{metadata.title}</p>
                     <p className="text-sm font-light text-blue-100">
-                      Created about {dateConverter(createdAt)}
+                      Создано около {dateConverter(createdAt)}
                     </p>
                   </div>
                 </Link>

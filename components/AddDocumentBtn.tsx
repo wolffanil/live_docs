@@ -29,10 +29,10 @@ function AddDocumentBtn({ userId, email }: AddDocumentBtnProps) {
       {!isPending ? (
         <>
           <Image src="/assets/icons/add.svg" alt="add" width={24} height={24} />
-          <p className="hidden sm:block">Start a blank document</p>
+          <p className="hidden sm:block">Запуск чистого документа</p>
         </>
       ) : (
-        <p>Creating...</p>
+        <p>Загрузка...</p>
       )}
     </Button>
   );

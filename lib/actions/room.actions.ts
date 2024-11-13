@@ -1,10 +1,11 @@
 "use server";
 
 import { nanoid } from "nanoid";
+
+import { liveblocks } from "../liveblocks";
 import { revalidatePath } from "next/cache";
 import { getAccessType, parseStringify } from "../utils";
 import { redirect } from "next/navigation";
-import { liveblocks } from "../liveblocks";
 
 export const createDocument = async ({
   userId,
@@ -109,7 +110,7 @@ export const updateDocumentAccess = async ({
         subjectId: notificationId,
         activityData: {
           userType,
-          title: `You have been granted ${userType} access to the document by ${updatedBy.name}`,
+          title: `Вам был предоставлен ${userType} доступ к документу с помощью ${updatedBy.name}`,
           updatedBy: updatedBy.name,
           avatar: updatedBy.avatar,
           email: updatedBy.email,

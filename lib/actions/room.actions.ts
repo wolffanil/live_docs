@@ -110,8 +110,10 @@ export const updateDocumentAccess = async ({
         subjectId: notificationId,
         activityData: {
           userType,
-          title: `Вам был предоставлен ${userType} доступ к документу с помощью ${updatedBy.name}`,
-          updatedBy: updatedBy.name,
+          title: `Вам был предоставлен ${userType} доступ к документу с помощью ${
+            updatedBy?.name || "пользователь"
+          }`,
+          updatedBy: updatedBy?.name || "пользователь",
           avatar: updatedBy.avatar,
           email: updatedBy.email,
         },

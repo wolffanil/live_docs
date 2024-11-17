@@ -4,8 +4,8 @@ import Notifications from "@/components/Notifications";
 import SkeletonDocument from "@/components/SkeletonDocument";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
 import { Suspense } from "react";
+import { redirect } from "next/navigation";
 
 const Home = async () => {
   const clerkUser = await currentUser();

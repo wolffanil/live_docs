@@ -26,6 +26,7 @@ const ShareModal = ({
   currentUserType,
 }: ShareDocumentDialogProps) => {
   const user = useSelf();
+  console.log(user);
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);

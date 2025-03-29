@@ -57,6 +57,8 @@ export const getDocument = async ({
     return parseStringify(room);
   } catch (error) {
     console.log(`Error happened while getting a room: ${error}`);
+    revalidatePath("/");
+    redirect("/");
   }
 };
 
@@ -73,6 +75,8 @@ export const updateDocument = async (roomId: string, title: string) => {
     return parseStringify(updatedRoom);
   } catch (error) {
     console.log(`Error happened while updating a room: ${error}`);
+    revalidatePath("/");
+    redirect("/");
   }
 };
 
@@ -111,11 +115,11 @@ export const updateDocumentAccess = async ({
         activityData: {
           userType,
           title: `Вам был предоставлен ${userType} доступ к документу с помощью ${
-            updatedBy?.name || "пользователь"
+            updatedBy?.name ?? "пользователь"
           }`,
-          updatedBy: updatedBy?.name || "пользователь",
-          avatar: updatedBy.avatar,
-          email: updatedBy.email,
+          updatedBy: updatedBy?.name ?? "пользователь",
+          avatar: updatedBy?.avatar ?? "пользователь",
+          email: updatedBy?.email ?? "пользователь",
         },
         roomId,
       });
@@ -125,6 +129,8 @@ export const updateDocumentAccess = async ({
     return parseStringify(room);
   } catch (error) {
     console.log(`Error happened while updating a room access: ${error}`);
+    revalidatePath("/");
+    redirect("/");
   }
 };
 
@@ -152,6 +158,8 @@ export const removeCollaborator = async ({
     return parseStringify(updatedRoom);
   } catch (error) {
     console.log(`Error happened while removing a collaborator: ${error}`);
+    revalidatePath("/");
+    redirect("/");
   }
 };
 

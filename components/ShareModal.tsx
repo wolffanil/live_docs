@@ -18,6 +18,7 @@ import { Input } from "./ui/input";
 import UserTypeSelector from "./UserTypeSelector";
 import Collaborator from "./Collaborator";
 import { updateDocumentAccess } from "@/lib/actions/room.actions";
+import { findUser } from "@/lib/actions/user.actions";
 
 const ShareModal = ({
   roomId,
@@ -26,7 +27,6 @@ const ShareModal = ({
   currentUserType,
 }: ShareDocumentDialogProps) => {
   const user = useSelf();
-  console.log(user);
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -35,7 +35,16 @@ const ShareModal = ({
   const [userType, setUserType] = useState<UserType>("viewer");
 
   const shareDocumentHandler = async () => {
+    if (!email) return;
     setLoading(true);
+
+    try {
+      await findUser(email);
+    } catch (error) {
+      alert("Пользователя не существует");
+      setLoading(false);
+      return;
+    }
 
     await updateDocumentAccess({
       roomId,
@@ -44,6 +53,7 @@ const ShareModal = ({
       updatedBy: user.info,
     });
 
+    setEmail("");
     setLoading(false);
   };
 

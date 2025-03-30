@@ -19,6 +19,7 @@ import UserTypeSelector from "./UserTypeSelector";
 import Collaborator from "./Collaborator";
 import { updateDocumentAccess } from "@/lib/actions/room.actions";
 import { findUser } from "@/lib/actions/user.actions";
+import toast from "react-hot-toast";
 
 const ShareModal = ({
   roomId,
@@ -38,10 +39,16 @@ const ShareModal = ({
     if (!email) return;
     setLoading(true);
 
+    if (collaborators?.some((c) => c?.email === email)) {
+      toast.error("Пользователь уже есть в документе");
+      setLoading(false);
+      return;
+    }
+
     try {
       await findUser(email);
     } catch (error) {
-      alert("Пользователя не существует");
+      toast.error("Пользователя не существует");
       setLoading(false);
       return;
     }
@@ -53,6 +60,7 @@ const ShareModal = ({
       updatedBy: user.info,
     });
 
+    toast.success("Пользователь добавлен в документ");
     setEmail("");
     setLoading(false);
   };

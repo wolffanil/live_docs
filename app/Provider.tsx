@@ -8,6 +8,7 @@ import {
   LiveblocksProvider,
 } from "@liveblocks/react/suspense";
 import { ReactNode } from "react";
+import { Toaster } from "react-hot-toast";
 
 const Provider = ({ children }: { children: ReactNode }) => {
   const { user: clerkUser } = useUser();
@@ -30,6 +31,14 @@ const Provider = ({ children }: { children: ReactNode }) => {
         return roomUsers;
       }}
     >
+      <Toaster
+        toastOptions={{
+          style: {
+            background: "#333",
+            color: "#fff",
+          },
+        }}
+      />
       <ClientSideSuspense fallback={<Loader />}>{children}</ClientSideSuspense>
     </LiveblocksProvider>
   );

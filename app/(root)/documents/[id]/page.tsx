@@ -20,10 +20,7 @@ const Document = async ({ params: { id } }: SearchParamProps) => {
 
   const usersData = users.map((user: User) => ({
     ...user,
-    name:
-      user?.name?.split(" ")[0] == "null"
-        ? "пользователь пользователь"
-        : user?.name,
+    name: user?.name?.split(" ")[0] == "null" ? "пользователь" : user?.name,
     userType: room.usersAccesses[user?.email]?.includes("room:write")
       ? "editor"
       : "viewer",

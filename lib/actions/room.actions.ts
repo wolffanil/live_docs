@@ -117,7 +117,10 @@ export const updateDocumentAccess = async ({
           title: `Вам был предоставлен ${userType} доступ к документу с помощью ${
             updatedBy?.name ?? "пользователь"
           }`,
-          updatedBy: updatedBy?.name ?? "пользователь",
+          updatedBy:
+            updatedBy?.name?.split(" ")[0] == "null"
+              ? "пользователь"
+              : updatedBy.name,
           avatar: updatedBy?.avatar ?? "пользователь",
           email: updatedBy?.email ?? "пользователь",
         },

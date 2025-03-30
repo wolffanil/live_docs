@@ -57,7 +57,13 @@ const ShareModal = ({
       roomId,
       email,
       userType: userType as UserType,
-      updatedBy: user.info,
+      updatedBy: {
+        ...user.info,
+        name:
+          user.info.name?.split(" ")[0] == "null"
+            ? "пользователь"
+            : user.info.name,
+      },
     });
 
     toast.success("Пользователь добавлен в документ");
